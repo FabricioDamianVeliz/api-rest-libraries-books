@@ -6,7 +6,7 @@ const Library = sequelize.define('library', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
-    primaryKey: true,
+    primaryKey: true
   },
   name: DataTypes.STRING,
   location: DataTypes.STRING,
@@ -14,10 +14,10 @@ const Library = sequelize.define('library', {
   deletedAt: {
     type: DataTypes.DATE,
     allowNull: true,
-    defaultValue: null,
+    defaultValue: null
   }
 }, {
-  paranoid: true, // Habilitar borrado lógico
+  paranoid: true // Habilitar borrado lógico
 });
 
 

@@ -1,7 +1,6 @@
 POST http://localhost:8050/api/book
 Content-Type : application/json
 
-
 {
     "isbn" : 100,
     "title" : "Don Quijote de la Mancha",
@@ -10,11 +9,7 @@ Content-Type : application/json
     "libraryId": 1
 }
 
-###
 
-
-
-###
 
 
 

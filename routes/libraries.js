@@ -15,11 +15,11 @@ module.exports = function(){
     //rutas para el logueado
 
     // Ruta para crear una librería
-    router.post('/library', librariesController.createLibrary);
+    router.post('/library', userExtractor, librariesController.createLibrary);
     // Ruta para actualizar una librería
-    router.put('/library/:id', librariesController.updateLibrary);
+    router.put('/library/:id', userExtractor, librariesController.updateLibrary);
     // Ruta para eliminar una librería de manera lógica
-    router.delete('/library/:id', librariesController.deleteLibrary);
+    router.delete('/library/:id', userExtractor, librariesController.deleteLibrary);
 
     //rutas para el visitante
 

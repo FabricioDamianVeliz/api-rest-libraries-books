@@ -15,11 +15,11 @@ module.exports = function(){
     //rutas para el logueado
 
     // Ruta para crear un libro
-    router.post('/book', booksController.createBook);
+    router.post('/book', userExtractor, booksController.createBook);
     // Ruta para actualizar un libro
-    router.put('/book/:id', booksController.updateBook);
+    router.put('/book/:id', userExtractor, booksController.updateBook);
     // Ruta para eliminar un libro de manera lógica
-    router.delete('/book/:id', booksController.deleteBook);
+    router.delete('/book/:id', userExtractor, booksController.deleteBook);
     //router.delete('/book/:id', userExtractor, booksController.deleteBook);
 
     //rutas para el visitante

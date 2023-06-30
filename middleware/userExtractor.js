@@ -11,8 +11,11 @@ module.exports = (req, res, next) => {
 
     const decodedToken = jwt.verify(token, process.env.SECRET);
 
+    console.log(token)
+    console.log(decodedToken)
+
     if(!token || !decodedToken.id){
-        return res.status(401).json({error: 'token faltante o inválido'});
+        return res.status(401).json({error: 'Missing or invalid token'});
     }
 
     const {id: userId} = decodedToken;

@@ -1,27 +1,27 @@
 const ERROR_HANDLERS = {
     CastError: res =>
         res.status(400).send({
-            error: 'La identificación utilizada está mal formada'
+            error: 'The id used is malformed'
         }),
 
     TypeError: res =>
         res.status(400).send({
-            error: 'La identificación utilizada no existe'
+            error: 'The id used does not exist'
         }),
 
     ValidationError: (res, {message}) => 
         res.status(409).send({
-            error: 'campo ya existe'
+            error: 'Field already exists'
         }),
     
     JsonWebTokenError: res =>
         res.status(401).json({
-            error: 'usuario o contraseña inválidos'
+            error: 'Invalid username or password'
         }),
 
     TokenExpiredError: res =>
         res.status(401).json({
-            error: 'token expirado'
+            error: 'Expired token'
         }),
     
     defaultError: res =>

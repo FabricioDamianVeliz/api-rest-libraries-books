@@ -6,8 +6,7 @@ exports.showUsers = async (req, res) => {
       const users = await User.findAll();
       res.json(users);
     } catch (error) {
-      console.error("Hubo un error al obtener los usuarios", error);
-      res.status(500).json({ error: "Error al obtener los usuarios" });
+      res.status(500).json({ error: "Error getting users" });
     }
   };
 

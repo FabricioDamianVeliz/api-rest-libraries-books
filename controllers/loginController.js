@@ -13,7 +13,7 @@ exports.createLogin = async (req, res) => {
 
     if(!(user && passwordCorrect)){
         res.status(401).json({
-            error: 'usuario o contraseña inválidos'
+            error: 'invalid username or password'
         })
     }
 

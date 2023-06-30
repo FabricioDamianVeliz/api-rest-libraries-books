@@ -6,7 +6,7 @@ const Book = sequelize.define('book', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
-    primaryKey: true,
+    primaryKey: true
   },
   isbn: {
     type: DataTypes.INTEGER,
@@ -18,7 +18,7 @@ const Book = sequelize.define('book', {
   deletedAt: {
     type: DataTypes.DATE,
     allowNull: true,
-    defaultValue: null,
+    defaultValue: null
   },
   libraryId: {
     type: DataTypes.INTEGER,
@@ -28,7 +28,7 @@ const Book = sequelize.define('book', {
     }
   }
 }, {
-  paranoid: true, // Habilitar borrado lógico
+  paranoid: true // Habilitar borrado lógico
 });
 
 // Establecer la relación entre Library y Book
