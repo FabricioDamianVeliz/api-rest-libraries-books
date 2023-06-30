@@ -24,7 +24,7 @@ module.exports = function(){
     //rutas para el visitante
 
     // Ruta para obtener todas las librerías y sus libros
-    //router.get('/library', librariesController.getAllLibraries);
+    router.get('/library', librariesController.getAllLibraries);
     // Ruta para obtener una librería y todos sus libros
     //router.get('/library/:id', librariesController.getLibrary);
 

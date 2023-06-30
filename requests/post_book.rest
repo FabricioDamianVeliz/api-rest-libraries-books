@@ -4,9 +4,10 @@ Content-Type : application/json
 
 {
     "isbn" : 100,
-    "title" : "Atardecer",
-    "author" : "Fabricio",
-    "year" : "2000"
+    "title" : "Don Quijote de la Mancha",
+    "author" : "Miguel de Cervantes Saavedra",
+    "year" : "1605",
+    "libraryId": 1
 }
 
 ###

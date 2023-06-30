@@ -1,10 +1,10 @@
-POST http://localhost:3000/api/library
+POST http://localhost:8050/api/library
 Content-Type : application/json
 
 
 {
     "name" : "Del Norte Libreria",
     "location" : "San Isidro, Catamarca",
-    "phone" : "4447867"
+    "phone" : "5493834212333"
 }
 

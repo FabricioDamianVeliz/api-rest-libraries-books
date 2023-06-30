@@ -24,7 +24,7 @@ module.exports = function(){
     //rutas para el visitante
 
     // Ruta para obtener todos los libros
-    //router.get('/books', booksController.getAllBooks);
+    //router.get('/book', booksController.getAllBooks);
     // Ruta para obtener un libro en particular
     //router.get('/book/:id', booksController.getBook);
 

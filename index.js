@@ -6,7 +6,8 @@ const routesLibraries = require('./routes/libraries');
 const { initializeDB } = require("./config/database");
 
 const app = express();
-const PORT = 3000;
+const PORT = 8050;
+app.use(express.json());
 
 // Configuración de las rutas
 app.use('/api', routesUsers());
