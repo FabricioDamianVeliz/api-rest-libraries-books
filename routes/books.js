@@ -17,16 +17,17 @@ module.exports = function(){
     // Ruta para crear un libro
     router.post('/book', booksController.createBook);
     // Ruta para actualizar un libro
-    //router.put('/book/:id', userExtractor, booksController.updateBook);
-    // Ruta para eliminar un libro
+    router.put('/book/:id', booksController.updateBook);
+    // Ruta para eliminar un libro de manera lógica
+    router.delete('/book/:id', booksController.deleteBook);
     //router.delete('/book/:id', userExtractor, booksController.deleteBook);
 
     //rutas para el visitante
 
     // Ruta para obtener todos los libros
-    //router.get('/book', booksController.getAllBooks);
+    router.get('/book', booksController.getAllBooks);
     // Ruta para obtener un libro en particular
-    //router.get('/book/:id', booksController.getBook);
+    router.get('/book/:id', booksController.getBook);
 
     return router;
 }

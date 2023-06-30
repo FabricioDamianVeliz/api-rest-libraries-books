@@ -7,12 +7,12 @@ exports.createBook = async(req,res,next) => {
 
     try {
 
-        const { isbn, title, author, year } = req.body;
+        const { isbn, title, author, year, libraryId } = req.body;
         //const {userId} = req;
 
         //const user = await User.findById(userId);
-
-        if(!isbn || !title || !author || !year){
+        //console.log(req.body);
+        if(!isbn || !title || !author || !year || !libraryId ){
             return res.status(400).json({
                 error: 'Missing required field'
             });
@@ -23,7 +23,8 @@ exports.createBook = async(req,res,next) => {
             isbn,
             title,
             author,
-            year
+            year,
+            libraryId
             //,user: user._id  
         });
 
@@ -36,147 +37,72 @@ exports.createBook = async(req,res,next) => {
         res.status(500).json({ error: 'Error creating book' });
     }
 
-  }
-
-exports.createEvent = async(req,res,next) => {
-
-    try {
-
-        const {title, description, dateList, place, outstanding = false, image} = req.body;
-        const {userId} = req;
-
-        const user = await User.findById(userId);
-
-        if(!title || !description || !dateList || !place || !image){
-            return res.status(400).json({
-                error: 'Falta un campo obligatorio'
-            });
-        }
-
-        let flag = 0;
-
-        dateList.forEach(date => {
-
-            if(!(new Date(date).getTime() > new Date().getTime())){
-                flag = 1;
-            }
-            
-        });
-
-        if(flag === 1){
-            return res.status(400).json({
-                error: 'the date is not correct'
-            });
-        }
-
-        dateList.sort();
-        
-        const newEvent = new Event({
-
-            title,
-            description,
-            dateList,
-            place,
-            outstanding,
-            image,
-            user: user._id  
-        });
-
-        const savedEvent = await newEvent.save();
-        user.events = user.events.concat(savedBook._id);
-        await user.save();
-        res.status(201).json(savedEvent);
-    } catch (error) {
-        next(error);
-    }
-    
 };
 
-exports.showEvents = async(req,res,next) => {
+// Para mostrar todos los libros 
+exports.getAllBooks = async(req,res,next) => {
     
     try {
 
-        const events = await Event.find({}).sort({dateList: 1});
+        const books = await Book.findAll();
 
-        res.json(events);
+        res.json(books);
         
     } catch (error) {
-        next(error);
+        res.status(500).json({ error: 'Error getting the books' });
     }
     // const url = faker.image.image();
     // console.log(url);     
 };
 
-exports.showEventById = async(req,res,next) => {
-
+// Para mostrar un libro por id
+exports.getBook = async(req,res,next) => {
+    const { id } = req.params;
     try {
-
-        const {id} = req.params;
-        const eventFound = await Event.findById(id);
-        if(eventFound){
-            return res.json(eventFound);
-        }else{
-            res.status(404).end();
+        const book = await Book.findByPk(id);
+        if (book) {
+        res.json(book);
+        } else {
+        res.status(404).json({ error: 'Book not found' });
         }
-        
     } catch (error) {
-        next(error);
+        res.status(500).json({ error: 'Error getting the book' });
     }
-    
 };
 
-exports.listOfPaginatedEvents = async(req,res,next) => {
-    
+// Para actualizar un libro 
+exports.updateBook = async(req,res,next) => {
+    const { id } = req.params;
+    const { title, author, year } = req.body;
     try {
-        
-        const { limit = 10, skip = 0 } = req.query;
-
-        const {userId} = req;
-
-        const [total, events] = await Promise.all([
-            Event.countDocuments(),
-            Event.find({user : userId}).sort({ _id: -1 }).skip(Number(skip)).limit(Number(limit))
-        ]);
-
-        return res.json({ total, events });
+        const book = await Book.findByPk(id);
+        if (book) {
+        await book.update({ title, author, year });
+        res.json(book);
+        } else {
+        res.status(404).json({ error: 'Book not found' });
+        }
     } catch (error) {
-        next(error);
+        res.status(500).json({ error: 'Error updating the book' });
     }
-        
 };
 
-exports.shareEvent = async(req,res,next) => {
-    
+
+// Para eliminar un libro de manera lógica
+
+exports.deleteBook = async(req,res,next) => {
+    const { id } = req.params;
     try {
-
-        const {id} = req.params;
-        const {_id,title,dateList} = await Event.findById(id);
-        const url = `http://${req.headers.host}/api/events/${_id}`;
-        const share = {
-            share : ` Iré al ${title} @ ${dateList[0]} ${url} `
-        };
-        res.json(share);
-        // console.log(share);
-        
+        const book = await Book.findByPk(id);
+        if (book) {
+        await book.destroy();
+        res.json({ message: 'Book deleted successfully' });
+        } else {
+        res.status(404).json({ error: 'Book not found' });
+        }
     } catch (error) {
-        next(error);
+        res.status(500).json({ error: 'Error deleting the book' });
     }
-        
-};
-
-exports.outstandingEvents = async(req,res,next) => {
-    
-
-    try {
-
-        const events = await Event.find({outstanding : true}).sort({ _id: -1 });
-
-        res.json(events);
-        
-    } catch (error) {
-        next(error);
-    }
-        
 };
 
 

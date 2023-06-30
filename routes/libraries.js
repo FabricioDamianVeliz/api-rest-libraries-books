@@ -17,16 +17,16 @@ module.exports = function(){
     // Ruta para crear una librería
     router.post('/library', librariesController.createLibrary);
     // Ruta para actualizar una librería
-    //router.put('/library/:id', userExtractor, librariesController.updateLibrary);
-    // Ruta para eliminar una librería
-    //router.delete('/library/:id', userExtractor, librariesController.deleteLibrary);
+    router.put('/library/:id', librariesController.updateLibrary);
+    // Ruta para eliminar una librería de manera lógica
+    router.delete('/library/:id', librariesController.deleteLibrary);
 
     //rutas para el visitante
 
     // Ruta para obtener todas las librerías y sus libros
     router.get('/library', librariesController.getAllLibraries);
     // Ruta para obtener una librería y todos sus libros
-    //router.get('/library/:id', librariesController.getLibrary);
+    router.get('/library/:id', librariesController.getLibrary);
 
     return router;
 }

@@ -10,7 +10,7 @@ const initializeDB = async () => {
     await sequelize.authenticate();
     await sequelize.query("SELECT 2+2  as result;");
     console.log("Database connection established");
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ force: true });
   } catch (error) {
     console.error("There was an error initializing the database", error);
   }
