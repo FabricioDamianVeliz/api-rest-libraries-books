@@ -1,0 +1,19 @@
+POST http://localhost:3000/api/book
+Content-Type : application/json
+
+
+{
+    "isbn" : 100,
+    "title" : "Atardecer",
+    "author" : "Fabricio",
+    "year" : "2000"
+}
+
+###
+
+
+
+###
+
+
+

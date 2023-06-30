@@ -1,24 +1,21 @@
 const express = require('express');
-const passport = require('passport');
-const session = require('express-session');
-const routes = require('./routes/routes.js');
-const auth = require('./auth');
-const sequelize = require('./database');
+const routesUsers = require('./routes/users');
+const routesLogin = require('./routes/login');
+const routesBooks = require('./routes/books');
+const routesLibraries = require('./routes/libraries');
+const { initializeDB } = require("./config/database");
 
 const app = express();
-const port = 3000;
-
-// Configuración de Passport y Express-Session
-app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }));
-app.use(passport.initialize());
-app.use(passport.session());
+const PORT = 3000;
 
 // Configuración de las rutas
-app.use('/api', routes);
+app.use('/api', routesUsers());
+app.use('/api', routesLogin());
+app.use('/api', routesBooks());
+app.use('/api', routesLibraries());
 
 // Sincronización de la base de datos y arranque del servidor
-sequelize.sync().then(() => {
-  app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-  });
+app.listen(PORT, async () => {
+  await initializeDB();
+  console.log(`Server running in ${PORT}`);
 });
