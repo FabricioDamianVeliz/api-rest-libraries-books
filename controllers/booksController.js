@@ -1,5 +1,5 @@
-const Book = require('../models/Book');
-const User = require('../models/User');
+const Book = require('../models/book');
+const User = require('../models/user');
 //const faker = require('faker');
 
 // Controlador para crear un libro
