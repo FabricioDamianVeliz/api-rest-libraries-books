@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/database");
-const Library = require('./Library');
+const Library = require('./library');
 
 const Book = sequelize.define('book', {
   id: {
