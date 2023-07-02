@@ -1,6 +1,6 @@
 POST http://localhost:8050/api/book
 Content-Type : application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjg4MTU5ODg4LCJleHAiOjE2ODg3NjQ2ODh9.JhKQR3822bBKDuqqsuijyK0Lthk84ogId1Fgth_rLbM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjg4MjY3NjEzLCJleHAiOjE2ODg4NzI0MTN9.r-2khm__O2Vd9XiSDrfIcaEX74hEZcfa38DvnPMgQCE
 
 {
     "isbn" : 100,

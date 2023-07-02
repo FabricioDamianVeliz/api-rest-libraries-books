@@ -1,9 +1,9 @@
 require('dotenv').config();
 const express = require('express');
-const routesUsers = require('./routes/users');
+const routesUser = require('./routes/user');
 const routesLogin = require('./routes/login');
-const routesBooks = require('./routes/books');
-const routesLibraries = require('./routes/libraries');
+const routesBook = require('./routes/book');
+const routesLibrary = require('./routes/library');
 const { initializeDB } = require("./config/database");
 const notFound = require('./middleware/notFound.js');
 const handleErrors = require('./middleware/handleErrors');
@@ -12,10 +12,10 @@ const app = express();
 app.use(express.json());
 
 // Configuración de las rutas
-app.use('/api', routesUsers());
+app.use('/api', routesUser());
 app.use('/api', routesLogin());
-app.use('/api', routesBooks());
-app.use('/api', routesLibraries());
+app.use('/api', routesBook());
+app.use('/api', routesLibrary());
 
 app.use(notFound);
 app.use(handleErrors);
