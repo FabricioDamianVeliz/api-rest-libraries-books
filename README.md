@@ -1,3 +1,5 @@
+Primero se tiene que crear un archivo .env con las variables KEYWORD cuyo valor deber ser bearer, PORT cuyo valor debe ser un número de puerto válido y SECRET cuyo valor debe ser una clave segura que se le asigne. Luego se deben ejecutar las rutas en el orden que se muestran abajo.
+
 ## ROUTES
 
 `POST /api/user`
